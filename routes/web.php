@@ -54,15 +54,11 @@ ROUTE::get("authors/{author:username}", function (User $author) {
 }
 );
 
-
 Route::get("register", [RegisterController::class, "create"])->middleware("guest"); // form sayfası
 Route::post("register", [RegisterController::class, "store"])->middleware("guest"); // create a user
-
 Route::get("login", [SessionsController::class, "create"])->middleware("guest"); // only guests can reach it.
 Route::post("logout", [SessionsController::class, "destroy"])->middleware("auth"); // you have to be authenticated.
-
 Route::post("sessions", [SessionsController::class, "store"])->middleware("guest");
-
-
 Route::post("posts/{post:slug}/comments", [PostCommentsController::class, "store"]);
 
+Route::get("admin/post/create", [PostController::class, "create"])->middleware("admin");
