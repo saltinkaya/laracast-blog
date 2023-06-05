@@ -62,3 +62,4 @@ Route::post("sessions", [SessionsController::class, "store"])->middleware("guest
 Route::post("posts/{post:slug}/comments", [PostCommentsController::class, "store"]);
 
 Route::get("admin/post/create", [PostController::class, "create"])->middleware("admin");
+Route::post("admin/posts", [PostController::class, "store"])->middleware("admin");
